@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" />
+      <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
+        <small *ngIf="form.get('username')?.errors?.['required']">Username is required.</small>
+        <small *ngIf="form.get('username')?.errors?.['minlength']">Minimum 3 characters required.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" />
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        <small *ngIf="form.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="form.get('email')?.errors?.['email']">Invalid email format.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="dob">Date of Birth</label>
+      <input id="dob" formControlName="dob" type="date" />
+      <div *ngIf="form.get('dob')?.invalid && form.get('dob')?.touched">
+        <small>Date of Birth is required.</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="company">Company</label>
+      <input id="company" formControlName="company" type="text" />
+      <div *ngIf="form.get('company')?.invalid && form.get('company')?.touched">
+        <small>Company is required.</small>
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
